@@ -27,12 +27,12 @@ $(document).ready(function() {
     });
 
     // Auto-rotate slides every 5 seconds
-    // setInterval(function() {
-    //     currentIndex = (currentIndex + 1) % $images.length
-    //     showSlide(currentIndex);
-    // }, 5000)
-    // setInterval(function () {
-    //     currentIndex = (currentIndex + 1) % $images.length
-    //     showSlide(currentIndex);
-    // }, 5000)
+    setInterval(function() {
+        currentIndex = (currentIndex + 1) % $images.length
+        showSlide(currentIndex);
+    }, 5000)
+    setInterval(function () {
+        currentIndex = (currentIndex + 1) % $images.length
+        showSlide(currentIndex);
+    }, 5000)
 });

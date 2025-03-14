@@ -12,7 +12,7 @@
 /* Base body styling with fallback fonts */
 body {
  font-family: 'Open Sans', 'Segoe UI', Calibri, 'Roboto', Helvetica, Arial, 'DejaVu Sans', sans-serif;
-   
+overflow-x: hidden;
 
 }
 /* Custom CSS variables for consistent theming */
@@ -21,15 +21,7 @@ body {
     --transparent-overlay:  #204cb8;  /* Opacity to  0.9; */
     --text-color: #333;
     --burger-icon:  #071b2b;
-/* --base-padding: 5%;
-        --section-padding: 7%;
-        --content-margin: 3%;
-        --section-margin: 5%;
-        
-        --hover-scale: 1.03;
-        --transition-duration: 0.3s;
-        --transition-duration-long: 0.4s;
-        --transition-timing: ease; */
+   
 }
 
 /*  Navigation Section */
@@ -45,7 +37,7 @@ body {
 
     .nav img {
         height: 35px;
-        margin-left: 6%;
+        margin-left: 10%;
     }
 
     .nav svg {
@@ -58,28 +50,32 @@ body {
     .hero-section {
         margin-top: 3%;
         position: relative;
-        overflow: hidden;
+        overflow: visible; /* Changed from hidden to allow underlay to extend */
         height: 100vh;
     }
-/*    Slider Container for image slideshow */
-    .slider-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    
-    }
 
-    .slider-image {
-        margin: 0 3em;
-        width: 90%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
+/*    Slider Container for image slideshow */
+.slider-container {
+    position: relative;
+    width: 90%; /* Adjust to match your slider-image width */
+    height: 100%;
+    margin: 0 3em;
+    z-index: 1; /* Higher than underlay */
+    overflow: hidden; /* This keeps images from revealing underlay beneath */
+}
+
+.slider-image {
+    width: 100%; /* Changed from 90% */
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin: 0; 
+}
+
 
     .slider-image.active {
         opacity: 1;
@@ -102,42 +98,49 @@ body {
         letter-spacing: 0.01em;
         color: white;
         padding: 25px 40px;
-        padding-left: 80px;
+        padding-left: 100px;
         width: 40%;
         max-width: 450px;
         font-weight: 700;
         font-size: 1rem;
+        z-index: 2;
     
     }
  /* Black Underlay beneath hero slider for visual contrast */
-    .black-underlay{
-        position: absolute;
-        
-        top: 42%;
-        left: 80%;
-        padding: 25px 40px;
-        z-index: -1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        background-color: black;
-        height: 60px;
-        width: 20%;
-        max-width: 450px;
 
-    }
+ .black-underlay {
+    position: absolute;
+    top: 42%;
+    left: calc(90% + 3em); /* Positioning it  just after slider container */
+    padding: 25px 40px;
+    z-index: 0; /* Below slider images but above background */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: black;
+    height: 60px;
+    width: 2%;
+    max-width: 450px;
+}
+/* 
+.hero-section:hover .black-underlay {
+    opacity: 1; /* Show with full opacity when hovering over the hero section */
+
+  
 /*   Navigation Arrow for slider  */
     .nav-arrow {
         position: absolute;
-        right: 9%;
-        top: 48%;
-        transform: translateY(-50%);
+        left: calc(90% - 60px); /* 90% - slider width, minus the arrow width */
+        top: 42%;
+        transform: translateY(-60%);
+        transform: translateX(98%);
         background: transparent;
         border: none;
-        
+        z-index: 2;
     }
 
     .nav-arrow svg {
+        
         width: 60px;
         height: 50px;
         fill: white;
@@ -151,6 +154,7 @@ body {
         height: 15px;
         opacity: 0.5;
         transition: opacity 0.3s ease;
+        z-index: 2;
     }
 
     .dot.active {
@@ -178,8 +182,8 @@ body {
         font-weight: 300;
         line-height: 1.6;
         font-size: 1rem;
-        padding-left: 5%;
-        letter-spacing: 0.03em;
+        padding-left: 7%;
+        letter-spacing: 0.02em;
     }
 /* Image Content  */
     .image-content {
@@ -195,19 +199,21 @@ body {
 
 /*  == Services Section ==*/
     .services-section {
-        padding: 0 7% 0 7%;
+        
         margin-top: 5%;
 
     }
 
     .services-grid {
         display: flex;
-        justify-content: space-between;
+        gap: 3%;
     
     }
  /* Services Item   */
     .service-item {
         width: 41%;
+        padding-left: 1%;
+       
     }
 
     .service-item img {
@@ -224,10 +230,10 @@ body {
     .fund-types {
         display: flex;
         flex-direction: row;
-        gap: 4%;
+        gap: 3%;
         height: auto;
-        margin-left: 7%;
-        margin-right: 7%;
+        margin-left: 8%;
+        
         margin-top: 3%;
         text-align: center;
     
@@ -263,6 +269,7 @@ body {
 
 /* == Tablet Break Point (max-width: 768px) == */
 @media (max-width: 768px) {
+  
     .hero-section{
          height: 300px;  /* Reduced height for tablets*/
      }
@@ -282,6 +289,7 @@ body {
      }
      .text-content{
         padding-left: 0;
+       
      }
 
      
@@ -448,7 +456,27 @@ body {
         justify-content: center;
         
     }
-        
+   
+    .text-content{
+        width: 100%;
+        padding-left: 0%;
+    }
+    .image-content img {
+     
+        padding-left: 5%;
+    }
+    .content-section{
+        margin-top: 0%;
+        margin-top: 0%;
+    }
+    .service-item img {
+         width: 90%;
+       
+       
+    }
+    .services-grid{
+       margin-left: 7%;
+    }
     .fund-type {
         width: 96%;
                 
