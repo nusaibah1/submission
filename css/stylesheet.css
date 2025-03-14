@@ -57,11 +57,11 @@ overflow-x: hidden;
 /*    Slider Container for image slideshow */
 .slider-container {
     position: relative;
-    width: 90%; /* Adjust to match your slider-image width */
+    width: 90%; 
     height: 100%;
     margin: 0 3em;
     z-index: 1; /* Higher than underlay */
-    overflow: hidden; /* This keeps images from revealing underlay beneath */
+    overflow: hidden; /* Hide overflow images */
 }
 
 .slider-image {
@@ -98,7 +98,7 @@ overflow-x: hidden;
         letter-spacing: 0.01em;
         color: white;
         padding: 25px 40px;
-        padding-left: 100px;
+        padding-left: 110px;
         width: 40%;
         max-width: 450px;
         font-weight: 700;
@@ -279,7 +279,10 @@ overflow-x: hidden;
          padding: 5% 10%;
      }
      .black-underlay{
-        width: 100%;
+      display: none;
+     }
+     .nav-arrow{
+        display: none;
      }
      .content-section{
          width: 100%;
@@ -310,25 +313,25 @@ overflow-x: hidden;
          margin-left: 12%;
      }
      .nav-arrow{
-         right: 11%;
+       display: none;
+     }
+     .black-underlay{
+        display: none;
      }
      .hero-section {
          height: 30vh;
      }
      .slider-image {
-         width: 80%;
+         width: 90%;
      }
      .slider-dots{
          right: 14%;
      }
-     .black-underlay {
-         height: 28px;
-         top: 38%;
-     }
+    
      .overlay-text {
          width: 50%;
          left: 5%;
-         font-size: 1rem;
+         font-size: 0.5rem;
          font-weight: 600;
          line-height: 1.2; 
          padding: 3% 11% 3%;
@@ -358,7 +361,9 @@ overflow-x: hidden;
         
      }
      .service-item img{
-        padding-left: 5%;
+        width: 70%;
+
+        margin-left: 14%;
      }
      .service-item, .fund-type {
          margin-top: -3%;
@@ -391,6 +396,7 @@ overflow-x: hidden;
          height: auto;
          transition: transform 0.4s ease;
          margin-top: 2%; 
+         font-size: 0.5rem;
  
      }
  }
@@ -482,5 +488,4 @@ overflow-x: hidden;
                 
     }
     }
-    
     
