@@ -8,7 +8,7 @@ $(document).ready(function() {
         $images.removeClass('active').eq(index).addClass('active')
         $dots.removeClass('active').eq(index).addClass('active')
         currentIndex = index
-        console.log('Showing slide:', index)
+     
     }
 
     $nextButton.on('click', function() {
